@@ -4,6 +4,7 @@
 #include "Character/AuraCharacter.h"
 
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Player/AuraPlayerState.h"
 
 AAuraCharacter::AAuraCharacter()
 {
@@ -16,6 +17,31 @@ AAuraCharacter::AAuraCharacter()
 	bUseControllerRotationPitch=false;
 	bUseControllerRotationRoll=false;
 	bUseControllerRotationYaw=false;
-	//
+		
+}
+
+void AAuraCharacter::InitAbilityActorInfo()
+{
+	AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>();
+	check (AuraPlayerState);
+	AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();	
+	AbilitySystemComponent->InitAbilityActorInfo(AuraPlayerState, this);
+	AttributeSet = AuraPlayerState->GetAttributeSet();
+}
+
+void AAuraCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
 	
+	//On Server, Init AbilityActorInfo
+	InitAbilityActorInfo();
+}
+
+void AAuraCharacter::OnRep_PlayerState()
+{
+	
+	Super::OnRep_PlayerState();
+	
+	//On Client, Init AbilityActorInfo
+	InitAbilityActorInfo();
 }
