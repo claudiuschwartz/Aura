@@ -17,6 +17,5 @@ AAuraCharacter::AAuraCharacter()
 	bUseControllerRotationRoll=false;
 	bUseControllerRotationYaw=false;
 	//
-
 	
 }

@@ -7,12 +7,12 @@
 #include "AuraCharacterBase.generated.h"
 
 UCLASS(Abstract /*"Abstract" prevents class from being dragged into the level*/)
-class AURA_API ACharacterBase : public ACharacter
+class AURA_API AAuraCharacterBase : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	ACharacterBase();
+	AAuraCharacterBase();
 
 protected:
 	virtual void BeginPlay() override;
