@@ -2,6 +2,10 @@
 
 
 #include "Character/AuraEnemy.h"
+
+#include "AbilitySystemComponent.h"
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "AbilitySystem/AuraAttributeSet.h"
 #include "Aura/Aura.h"
 
 
@@ -12,6 +16,11 @@ AAuraEnemy::AAuraEnemy()
 
 	Weapon->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 	Weapon->CustomDepthStencilValue = CUSTOM_DEPTH_RED;
+
+	AbilitySystemComponent = CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");
+	AbilitySystemComponent->SetIsReplicated(true);
+	
+	AttributeSet = CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
 	
 }
 
