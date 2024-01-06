@@ -32,6 +32,7 @@ void AAuraEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 		const UAuraAttributeSet* AttributeSet = Cast<UAuraAttributeSet>(ASCInterface->GetAbilitySystemComponent()->GetAttributeSet(UAuraAttributeSet::StaticClass())); //TSubclassOf<> is satisfied (in this case) with ClassName::StaticClass()
 		UAuraAttributeSet* MutableAuraAttributeSet = const_cast<UAuraAttributeSet*>(AttributeSet); //Just casting out the const from a const var - in this case, "ASCInterface" - (allegedly a big no-no in programming).
 		MutableAuraAttributeSet->SetHealth(AttributeSet->GetHealth()+ 50.f);
+		MutableAuraAttributeSet->SetMana(AttributeSet->GetMana()+ -30.f);
 		
 		Destroy();
 	}
