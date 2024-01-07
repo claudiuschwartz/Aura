@@ -16,7 +16,7 @@ class AURA_API AAuraEffectActor : public AActor
 
 public:
 	
-	AAuraEffectActor();	
+	AAuraEffectActor();
 
 protected:
 	
@@ -27,5 +27,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Effects")
 	TSubclassOf<UGameplayEffect> InstantGameplayEffectClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Effects")
+	TSubclassOf<UGameplayEffect> DurationGameplayEffectClass;
 
 };
