@@ -32,4 +32,14 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	}	
 }
 
+void AAuraEffectActor::OnOverlap(AActor* OverlappingActor)
+{
+	
+}
+
+void AAuraEffectActor::OnEndOverlap(AActor* OverlappingActor)
+{
+	
+}
+
 
