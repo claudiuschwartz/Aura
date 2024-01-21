@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "ActiveGameplayEffectHandle.h"
 #include "AuraEffectActor.generated.h"
-
 
 class UGameplayEffect;
 
@@ -40,17 +40,19 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass);
 
-	
-
 	UFUNCTION(BlueprintCallable)
 	void OnOverlap(AActor* OverlappingActor);
 
 	UFUNCTION(BlueprintCallable)
 	void OnEndOverlap(AActor* OverlappingActor);
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Effects")
 	bool bDestroyOnEffectRemoval = false;
 
+	UPROPERTY() //Map 
+	TMap<FActiveGameplayEffectHandle, class  UAbilitySystemComponent*> ActiveEffectHandles;
+		
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Effects")
 	TSubclassOf<UGameplayEffect> InstantGameplayEffectClass;
 
