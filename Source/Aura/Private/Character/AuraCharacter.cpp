@@ -42,6 +42,7 @@ void AAuraCharacter::InitAbilityActorInfo()
 		}
 		
 	}
+	InitializePrimaryAttributes();
 }
 
 void AAuraCharacter::PossessedBy(AController* NewController)
